@@ -1,4 +1,25 @@
 package br.com.senac.api.controllers;
 
-public class HelloworldController {
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+@RequestMapping("/helloWorld")
+public class HelloWorldController {
+
+    @GetMapping("/teste")
+    public ResponseEntity<String>  teste(){
+        return ResponseEntity.ok("Olá mundo!");
+    }
+
+    @GetMapping("/parImpar")
+    public ResponseEntity<String> parImpar(@RequestParam int numero){
+        if((numero % 2) ==0){
+            return ResponseEntity.ok("par");
+        }
+        return ResponseEntity.ok("Impar");
+    }
 }
